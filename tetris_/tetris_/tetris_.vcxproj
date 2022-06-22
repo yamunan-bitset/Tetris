@@ -127,7 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="piece.cpp" />
     <ClCompile Include="tetris_.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="piece.h" />
+    <ClInclude Include="vec2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

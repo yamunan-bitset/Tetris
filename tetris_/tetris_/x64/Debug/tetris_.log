@@ -1,2 +1,5 @@
-﻿  tetris_.cpp
+﻿  piece.cpp
+R:\graphics\tetris\tetris_\tetris_\piece.cpp(7,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  tetris_.cpp
+  Generating Code...
   tetris_.vcxproj -> R:\graphics\tetris\tetris_\x64\Debug\tetris_.exe

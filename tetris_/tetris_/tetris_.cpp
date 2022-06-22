@@ -1,4 +1,5 @@
 #include <raylib.h>
+#include "piece.h"
 
 namespace PC
 {
@@ -29,6 +30,7 @@ namespace PC
 int main()
 {
     PC::Init();
+    Piece piece;
     while (PC::Open())
     {
         BeginDrawing();
