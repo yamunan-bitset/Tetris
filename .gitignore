@@ -1,1 +1,2 @@
-tetris_/.vs
+*.vcxproj*
+x64 
