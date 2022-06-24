@@ -1,1 +1,0 @@
-R:\graphics\tetris\tetris_\tetris_\x64\Debug\tetris_.vcxproj.CopyComplete
