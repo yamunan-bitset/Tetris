@@ -1,18 +1,22 @@
 #include <raylib.h>
 #include "piece.h"
+#include <iostream>
 
 Piece piece;
 
 namespace GFX
 {
-    static unsigned width = 800, height = 500;
+    unsigned tile_size = 50;
+    static unsigned w = tile_size * 12, h = tile_size * 12;
+    int i = 0;
     void Init()
     {
         SetTargetFPS(60);
-        InitWindow(width, height, "Tetris");
+        InitWindow(w, h, "Tetris");
     }
     void Update()
     {
+        i++;
         if (IsKeyPressed(KEY_UP))
             piece.Rotate();
         if (IsKeyPressed(KEY_LEFT))
@@ -29,10 +33,21 @@ namespace GFX
             piece.c.x++;
             piece.d.x++;
         }
+        if (i % 20 == 0)
+        {
+            piece.a.y++;
+            piece.b.y++;
+            piece.c.y++;
+            piece.d.y++;
+        }
     }
     void Draw()
     {
         ClearBackground(RAYWHITE);
+        DrawRectangle(piece.a.x * tile_size, piece.a.y * tile_size, tile_size, tile_size, GREEN);
+        DrawRectangle(piece.b.x * tile_size, piece.b.y * tile_size, tile_size, tile_size, GREEN);
+        DrawRectangle(piece.c.x * tile_size, piece.c.y * tile_size, tile_size, tile_size, GREEN);
+        DrawRectangle(piece.d.x * tile_size, piece.d.y * tile_size, tile_size, tile_size, GREEN);
     }
     bool Open()
     {
