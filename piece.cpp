@@ -8,19 +8,19 @@ Piece::Piece()
 	int type = std::rand() % 7;
 	switch (type)
 	{
-	case S: a = Vec2(1, 5); b = Vec2(1, 4); c = Vec2(0, 4); d = Vec2(2, 5);
+	case S: a = Vec2(1, 1); b = Vec2(1, 0); c = Vec2(0, 0); d = Vec2(2, 1);
 		break;
-	case Z: a = Vec2(1, 4); b = Vec2(1, 5); c = Vec2(0, 5); d = Vec2(2, 4);
+	case Z: a = Vec2(1, 0); b = Vec2(1, 1); c = Vec2(0, 1); d = Vec2(2, 0);
 		break;
-	case L: a = Vec2(1, 5); b = Vec2(1, 4); c = Vec2(1, 6); d = Vec2(0, 6);
+	case L: a = Vec2(1, 1); b = Vec2(1, 0); c = Vec2(1, 2); d = Vec2(0, 2);
 		break;
-	case J: a = Vec2(1, 5); b = Vec2(1, 4); c = Vec2(1, 6); d = Vec2(0, 4);
+	case J: a = Vec2(1, 1); b = Vec2(1, 0); c = Vec2(1, 2); d = Vec2(0, 0);
 		break;
-	case SQR: a = Vec2(1, 5); b = Vec2(1, 4); c = Vec2(0, 5); d = Vec2(0, 4);
+	case SQR: a = Vec2(1, 1); b = Vec2(1, 0); c = Vec2(0, 1); d = Vec2(0, 0);
 		break;
-	case I: a = Vec2(1, 5); b = Vec2(1, 4); c = Vec2(1, 6); d = Vec2(1, 7);
+	case I: a = Vec2(1, 1); b = Vec2(1, 0); c = Vec2(1, 2); d = Vec2(1, 3);
 		break;
-	case T: a = Vec2(1, 5); b = Vec2(1, 4); c = Vec2(1, 6); d = Vec2(0, 5);
+	case T: a = Vec2(1, 1); b = Vec2(1, 0); c = Vec2(1, 2); d = Vec2(0, 1);
 		break;
 	default:
 		break;

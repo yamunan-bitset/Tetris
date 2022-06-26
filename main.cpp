@@ -17,36 +17,42 @@ namespace GFX
     void Update()
     {
         i++;
-        if (IsKeyPressed(KEY_UP))
-            piece.Rotate();
-        if (IsKeyPressed(KEY_LEFT))
+        if (piece.can_move)
         {
-            piece.a.x--;
-            piece.b.x--;
-            piece.c.x--;
-            piece.d.x--;
-        }
-        if (IsKeyPressed(KEY_RIGHT))
-        {
-            piece.a.x++;
-            piece.b.x++;
-            piece.c.x++;
-            piece.d.x++;
-        }
-        if (i % 20 == 0)
-        {
-            piece.a.y++;
-            piece.b.y++;
-            piece.c.y++;
-            piece.d.y++;
+            if (IsKeyPressed(KEY_UP))
+                piece.Rotate();
+            if (IsKeyPressed(KEY_LEFT))
+            {
+                piece.a.x--;
+                piece.b.x--;
+                piece.c.x--;
+                piece.d.x--;
+            }
+            if (IsKeyPressed(KEY_RIGHT))
+            {
+                piece.a.x++;
+                piece.b.x++;
+                piece.c.x++;
+                piece.d.x++;
+            }
+            if (i % 20 == 0)
+            {
+                piece.a.y++;
+                piece.b.y++;
+                piece.c.y++;
+                piece.d.y++;
+            }
+            if (piece.a.y > 10 || piece.b.y > 10 || piece.c.y > 10
+                || piece.d.y > 10)
+                piece.can_move = false;
         }
     }
     void Draw()
     {
         ClearBackground(RAYWHITE);
-        DrawRectangle(piece.a.x * tile_size, piece.a.y * tile_size, tile_size, tile_size, GREEN);
-        DrawRectangle(piece.b.x * tile_size, piece.b.y * tile_size, tile_size, tile_size, GREEN);
-        DrawRectangle(piece.c.x * tile_size, piece.c.y * tile_size, tile_size, tile_size, GREEN);
+        DrawRectangle(piece.a.x * tile_size, piece.a.y * tile_size, tile_size, tile_size, RED);
+        DrawRectangle(piece.b.x * tile_size, piece.b.y * tile_size, tile_size, tile_size, YELLOW);
+        DrawRectangle(piece.c.x * tile_size, piece.c.y * tile_size, tile_size, tile_size, BLUE);
         DrawRectangle(piece.d.x * tile_size, piece.d.y * tile_size, tile_size, tile_size, GREEN);
     }
     bool Open()
