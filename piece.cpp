@@ -27,6 +27,30 @@ Piece::Piece()
 	}
 }
 
+void Piece::operator + (char type)
+{
+	if (type == 'x')
+	{
+		a.x++; b.x++; c.x++; d.x++;
+	}
+	if (type == 'y')
+	{
+		a.y++; b.y++; c.y++; d.y++;
+	}
+}
+
+void Piece::operator - (char type)
+{
+	if (type == 'x')
+	{
+		a.x--; b.x--; c.x--; d.x--;
+	}
+	if (type == 'y')
+	{
+		a.y--; b.y--; c.y--; d.y--;
+	}
+}
+
 void Piece::Rotate()
 {
 }

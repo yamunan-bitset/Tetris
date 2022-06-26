@@ -22,38 +22,36 @@ namespace GFX
             if (IsKeyPressed(KEY_UP))
                 piece.Rotate();
             if (IsKeyPressed(KEY_LEFT))
-            {
-                piece.a.x--;
-                piece.b.x--;
-                piece.c.x--;
-                piece.d.x--;
-            }
+                piece - 'x';
             if (IsKeyPressed(KEY_RIGHT))
-            {
-                piece.a.x++;
-                piece.b.x++;
-                piece.c.x++;
-                piece.d.x++;
-            }
+                piece + 'x';
             if (i % 20 == 0)
-            {
-                piece.a.y++;
-                piece.b.y++;
-                piece.c.y++;
-                piece.d.y++;
-            }
+                piece + 'y';
             if (piece.a.y > 10 || piece.b.y > 10 || piece.c.y > 10
                 || piece.d.y > 10)
                 piece.can_move = false;
+            for (auto i : piece.blocks)
+                if (i->x < 0)
+                {
+                    i->x = 0; // FIXME
+                    std::cout << i->x << std::endl;
+                }
         }
     }
     void Draw()
     {
         ClearBackground(RAYWHITE);
+        
         DrawRectangle(piece.a.x * tile_size, piece.a.y * tile_size, tile_size, tile_size, RED);
         DrawRectangle(piece.b.x * tile_size, piece.b.y * tile_size, tile_size, tile_size, YELLOW);
         DrawRectangle(piece.c.x * tile_size, piece.c.y * tile_size, tile_size, tile_size, BLUE);
         DrawRectangle(piece.d.x * tile_size, piece.d.y * tile_size, tile_size, tile_size, GREEN);
+
+        for (unsigned i = 1; i < 12; i++)
+            DrawLine(tile_size * i, 0, tile_size * i, h, GRAY);
+        for (unsigned i = 1; i < 12; i++)
+            DrawLine(0, tile_size * i, w, tile_size * i, GRAY);
+
     }
     bool Open()
     {
