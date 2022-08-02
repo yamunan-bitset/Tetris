@@ -27,25 +27,19 @@ namespace GFX
                 piece + 'x';
             if (i % 20 == 0)
                 piece + 'y';
-            if (piece.a.y > 10 || piece.b.y > 10 || piece.c.y > 10
-                || piece.d.y > 10)
+            if (piece.a.y > 10 || piece.b.y > 10 || piece.c.y > 10 || piece.d.y > 10)
                 piece.can_move = false;
-            for (auto i : piece.blocks)
-                if (i->x < 0)
-                {
-                    i->x = 0; // FIXME
-                    std::cout << i->x << std::endl;
-                }
+            piece.CheckCollision();
         }
     }
     void Draw()
     {
-        ClearBackground(RAYWHITE);
+        ClearBackground(BLACK);
         
         DrawRectangle(piece.a.x * tile_size, piece.a.y * tile_size, tile_size, tile_size, RED);
-        DrawRectangle(piece.b.x * tile_size, piece.b.y * tile_size, tile_size, tile_size, YELLOW);
-        DrawRectangle(piece.c.x * tile_size, piece.c.y * tile_size, tile_size, tile_size, BLUE);
-        DrawRectangle(piece.d.x * tile_size, piece.d.y * tile_size, tile_size, tile_size, GREEN);
+        DrawRectangle(piece.b.x * tile_size, piece.b.y * tile_size, tile_size, tile_size, RED);
+        DrawRectangle(piece.c.x * tile_size, piece.c.y * tile_size, tile_size, tile_size, RED);
+        DrawRectangle(piece.d.x * tile_size, piece.d.y * tile_size, tile_size, tile_size, RED);
 
         for (unsigned i = 1; i < 12; i++)
             DrawLine(tile_size * i, 0, tile_size * i, h, GRAY);

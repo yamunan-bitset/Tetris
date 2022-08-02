@@ -27,11 +27,40 @@ Piece::Piece()
 	}
 }
 
+void Piece::CheckCollision()
+{
+	if (a.x == 0)
+		left = false;
+	else if (a.x == 11)
+		right = false;
+	else if (b.x == 0)
+		left = false;
+	else if (b.x == 11)
+		right = false;
+	else if (c.x == 0)
+		left = false;
+	else if (c.x == 11)
+		right = false;
+	else if (d.x == 0)
+		left = false;
+	else if (d.x == 11)
+		right = false;
+	else
+	{
+		right = true;
+		left = true;
+	}
+}
+
 void Piece::operator + (char type)
 {
+	CheckCollision();
 	if (type == 'x')
 	{
-		a.x++; b.x++; c.x++; d.x++;
+		if (right) 
+		{ 
+			a.x++; b.x++; c.x++; d.x++;
+		}
 	}
 	if (type == 'y')
 	{
@@ -41,9 +70,13 @@ void Piece::operator + (char type)
 
 void Piece::operator - (char type)
 {
+	CheckCollision();
 	if (type == 'x')
 	{
-		a.x--; b.x--; c.x--; d.x--;
+		if (left)
+		{
+			a.x--; b.x--; c.x--; d.x--;
+		}
 	}
 	if (type == 'y')
 	{

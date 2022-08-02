@@ -10,9 +10,10 @@ class Piece
 {
 public:
 	bool can_move = true;
+	bool right = true, left = true;
 	Vec2 a, b, c, d;
-	std::array<Vec2*, 4> blocks = { &a, &b, &c, &d };
 	Piece();
+	void CheckCollision();
 	void Rotate();
 	void operator + (char);
 	void operator - (char);
