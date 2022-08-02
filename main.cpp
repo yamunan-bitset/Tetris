@@ -1,8 +1,8 @@
 #include <raylib.h>
 #include "piece.h"
-#include <iostream>
+#include <vector>
 
-Piece piece;
+std::vector<Piece> pieces = { Piece() };
 
 namespace GFX
 {
@@ -17,35 +17,38 @@ namespace GFX
     void Update()
     {
         i++;
-        if (piece.can_move)
+        if (pieces.back().can_move)
         {
             if (IsKeyPressed(KEY_UP))
-                piece.Rotate();
+                pieces.back().Rotate();
             if (IsKeyPressed(KEY_LEFT))
-                piece - 'x';
+                pieces.back() - 'x';
             if (IsKeyPressed(KEY_RIGHT))
-                piece + 'x';
+                pieces.back() + 'x';
             if (i % 20 == 0)
-                piece + 'y';
-            if (piece.a.y > 10 || piece.b.y > 10 || piece.c.y > 10 || piece.d.y > 10)
-                piece.can_move = false;
-            piece.CheckCollision();
+                pieces.back() + 'y';
+            if (pieces.back().a.y > 10 || pieces.back().b.y > 10 || pieces.back().c.y > 10 || pieces.back().d.y > 10)
+                pieces.back().can_move = false;
+            pieces.back().CheckCollision();
         }
+        else pieces.push_back(Piece());
     }
     void Draw()
     {
         ClearBackground(BLACK);
         
-        DrawRectangle(piece.a.x * tile_size, piece.a.y * tile_size, tile_size, tile_size, RED);
-        DrawRectangle(piece.b.x * tile_size, piece.b.y * tile_size, tile_size, tile_size, RED);
-        DrawRectangle(piece.c.x * tile_size, piece.c.y * tile_size, tile_size, tile_size, RED);
-        DrawRectangle(piece.d.x * tile_size, piece.d.y * tile_size, tile_size, tile_size, RED);
+        for (Piece piece : pieces)
+        {
+            DrawRectangle(piece.a.x * tile_size, piece.a.y * tile_size, tile_size, tile_size, RED);
+            DrawRectangle(piece.b.x * tile_size, piece.b.y * tile_size, tile_size, tile_size, RED);
+            DrawRectangle(piece.c.x * tile_size, piece.c.y * tile_size, tile_size, tile_size, RED);
+            DrawRectangle(piece.d.x * tile_size, piece.d.y * tile_size, tile_size, tile_size, RED);
+        }
 
         for (unsigned i = 1; i < 12; i++)
             DrawLine(tile_size * i, 0, tile_size * i, h, GRAY);
         for (unsigned i = 1; i < 12; i++)
             DrawLine(0, tile_size * i, w, tile_size * i, GRAY);
-
     }
     bool Open()
     {
