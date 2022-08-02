@@ -1,6 +1,5 @@
 #pragma once
 #include <raylib.h>
-#include <array>
 #include <string>
 #include "vec2.h"
 
@@ -13,7 +12,7 @@ public:
 	bool right = true, left = true;
 	Vec2 a, b, c, d;
 	Piece();
-	void CheckCollision();
+	void CheckBoundaryCollision();
 	void Rotate();
 	void operator + (char);
 	void operator - (char);

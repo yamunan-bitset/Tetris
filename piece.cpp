@@ -27,7 +27,7 @@ Piece::Piece()
 	}
 }
 
-void Piece::CheckCollision()
+void Piece::CheckBoundaryCollision()
 {
 	if (a.x == 0)
 		left = false;
@@ -54,7 +54,7 @@ void Piece::CheckCollision()
 
 void Piece::operator + (char type)
 {
-	CheckCollision();
+	CheckBoundaryCollision();
 	if (type == 'x')
 	{
 		if (right) 
@@ -70,7 +70,7 @@ void Piece::operator + (char type)
 
 void Piece::operator - (char type)
 {
-	CheckCollision();
+	CheckBoundaryCollision();
 	if (type == 'x')
 	{
 		if (left)
