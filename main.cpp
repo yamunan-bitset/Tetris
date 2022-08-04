@@ -18,7 +18,9 @@ namespace GFX
     }
     void Update()
     {
-        i++;
+        if (IsKeyDown(KEY_SPACE))
+            i += 5;
+        else i++;
         if (pieces.back().can_move)
         {
             if (IsKeyPressed(KEY_UP))
