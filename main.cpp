@@ -26,9 +26,9 @@ namespace GFX
         {
             if (IsKeyPressed(KEY_UP))
                 pieces.back().Rotate();
-            if (IsKeyPressed(KEY_LEFT))
+            if (IsKeyPressed(KEY_LEFT) && pieces.back().move_left)
                 pieces.back() - 'x';
-            if (IsKeyPressed(KEY_RIGHT))
+            if (IsKeyPressed(KEY_RIGHT) && pieces.back().move_right)
                 pieces.back() + 'x';
             if (i % 20 == 0)
                 pieces.back() + 'y';
@@ -41,6 +41,12 @@ namespace GFX
                 if (Vec2(place.x, place.y - 1) == pieces.back().a || Vec2(place.x, place.y - 1) == pieces.back().b
                     || Vec2(place.x, place.y - 1) == pieces.back().c || Vec2(place.x, place.y - 1) == pieces.back().d)
                     pieces.back().can_move = false;
+                if (Vec2(place.x - 1, place.y) == pieces.back().a || Vec2(place.x - 1, place.y) == pieces.back().b
+                    || Vec2(place.x - 1, place.y) == pieces.back().c || Vec2(place.x - 1, place.y) == pieces.back().d)
+                    pieces.back().move_right = false;
+                if (Vec2(place.x + 1, place.y) == pieces.back().a || Vec2(place.x + 1, place.y) == pieces.back().b
+                    || Vec2(place.x + 1, place.y) == pieces.back().c || Vec2(place.x + 1, place.y) == pieces.back().d)
+                    pieces.back().move_left = false;
             }
         }
         else

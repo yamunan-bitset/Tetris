@@ -12,6 +12,8 @@ class Piece
 public:
 	bool can_move = true;
 	bool right = true, left = true;
+	bool move_right = true;
+	bool move_left = true;
 	Vec2 a, b, c, d;
 	Piece();
 	void CheckBoundaryCollision();
