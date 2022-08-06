@@ -6,21 +6,22 @@ Piece::Piece()
 {
 	std::srand(std::time(NULL));
 	int type = std::rand() % 7;
+	int start_x = std::rand() % 11;
 	switch (type)
 	{
-	case S: a = Vec2(1, 1); b = Vec2(1, 0); c = Vec2(0, 0); d = Vec2(2, 1);
+	case S: a = Vec2(start_x + 1, 1); b = Vec2(start_x + 1, 0); c = Vec2(start_x, 0); d = Vec2(start_x + 2, 1);
 		break;
-	case Z: a = Vec2(1, 0); b = Vec2(1, 1); c = Vec2(0, 1); d = Vec2(2, 0);
+	case Z: a = Vec2(start_x + 1, 0); b = Vec2(start_x + 1, 1); c = Vec2(start_x, 1); d = Vec2(start_x + 2, 0);
 		break;
-	case L: a = Vec2(1, 1); b = Vec2(1, 0); c = Vec2(1, 2); d = Vec2(0, 2);
+	case L: a = Vec2(start_x + 1, 1); b = Vec2(start_x + 1, 0); c = Vec2(start_x + 1, 2); d = Vec2(start_x, 2);
 		break;
-	case J: a = Vec2(1, 1); b = Vec2(1, 0); c = Vec2(1, 2); d = Vec2(0, 0);
+	case J: a = Vec2(start_x + 1, 1); b = Vec2(start_x + 1, 0); c = Vec2(start_x + 1, 2); d = Vec2(start_x, 0);
 		break;
-	case SQR: a = Vec2(1, 1); b = Vec2(1, 0); c = Vec2(0, 1); d = Vec2(0, 0);
+	case SQR: a = Vec2(start_x + 1, 1); b = Vec2(start_x + 1, 0); c = Vec2(start_x, 1); d = Vec2(start_x, 0);
 		break;
-	case I: a = Vec2(1, 1); b = Vec2(1, 0); c = Vec2(1, 2); d = Vec2(1, 3);
+	case I: a = Vec2(start_x + 1, 1); b = Vec2(start_x + 1, 0); c = Vec2(start_x + 1, 2); d = Vec2(start_x + 1, 3);
 		break;
-	case T: a = Vec2(1, 1); b = Vec2(1, 0); c = Vec2(1, 2); d = Vec2(0, 1);
+	case T: a = Vec2(start_x + 1, 1); b = Vec2(start_x + 1, 0); c = Vec2(start_x + 1, 2); d = Vec2(start_x, 1);
 		break;
 	default:
 		break;
@@ -50,6 +51,20 @@ void Piece::CheckBoundaryCollision()
 		right = true;
 		left = true;
 	}
+}
+
+#include <iostream>
+
+void Piece::CheckCollision(std::vector<Piece> pieces)
+{
+	if (a == pieces.back().a && b == pieces.back().b && c == pieces.back().c && d == pieces.back().d)
+		std::cout << "No error!" << std::endl;
+	else std::cout << "Error!" << std::endl;
+	/*
+	for (Piece piece : pieces)
+		if (piece.a.x == a.x || piece.b.x == b.x || piece.c.x == c.x || piece.d.x == d.x
+			|| )
+			*/
 }
 
 void Piece::operator + (char type)
@@ -82,6 +97,13 @@ void Piece::operator - (char type)
 	{
 		a.y--; b.y--; c.y--; d.y--;
 	}
+}
+
+bool Piece::operator == (Piece piece1)
+{
+	if (a == piece1.a && b == piece1.b && c == piece1.c && d == piece1.d)
+		return true;
+	return false;
 }
 
 void Piece::Rotate()
