@@ -10,12 +10,13 @@ enum PieceType { S, Z, L, J, SQR, I, T };
 class Piece
 {
 public:
+	Color colour;
 	bool can_move = true;
 	bool right = true, left = true;
 	bool move_right = true;
 	bool move_left = true;
 	Vec2 a, b, c, d;
-	Piece();
+	Piece(Color);
 	void CheckBoundaryCollision();
 	void CheckCollision(std::vector<Piece>);
 	void Rotate();

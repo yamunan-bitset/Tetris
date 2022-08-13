@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 
-Piece::Piece()
+Piece::Piece(Color _colour)
 {
 	std::srand(std::time(NULL));
 	int type = std::rand() % 7;
@@ -26,6 +26,7 @@ Piece::Piece()
 	default:
 		break;
 	}
+	colour = _colour;
 }
 
 void Piece::CheckBoundaryCollision()
@@ -51,20 +52,6 @@ void Piece::CheckBoundaryCollision()
 		right = true;
 		left = true;
 	}
-}
-
-#include <iostream>
-
-void Piece::CheckCollision(std::vector<Piece> pieces)
-{
-	if (a == pieces.back().a && b == pieces.back().b && c == pieces.back().c && d == pieces.back().d)
-		std::cout << "No error!" << std::endl;
-	else std::cout << "Error!" << std::endl;
-	/*
-	for (Piece piece : pieces)
-		if (piece.a.x == a.x || piece.b.x == b.x || piece.c.x == c.x || piece.d.x == d.x
-			|| )
-			*/
 }
 
 void Piece::operator + (char type)
