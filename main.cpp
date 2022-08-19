@@ -2,8 +2,8 @@
 #include "piece.h"
 #include <array>
 #include <vector>
+#include <ctime>
 
-#include <iostream>
 namespace GFX
 {
     unsigned tile_size = 50;
@@ -42,7 +42,7 @@ namespace GFX
             for (Vec2 place : occupied)
             {
                 if (place == pieces.back().a || place == pieces.back().b || place == pieces.back().c
-                    || place == pieces.back().d) std::cout << "Error!!" << std::endl;
+                    || place == pieces.back().d) printf("Error!!\n");
                 if (Vec2(place.x, place.y - 1) == pieces.back().a || Vec2(place.x, place.y - 1) == pieces.back().b
                     || Vec2(place.x, place.y - 1) == pieces.back().c || Vec2(place.x, place.y - 1) == pieces.back().d)
                     pieces.back().can_move = false;
@@ -64,7 +64,7 @@ namespace GFX
             occupied.push_back(Vec2(pieces.back().d));
             if (pieces.back().a.y == 11 || pieces.back().b.y == 11
                 || pieces.back().c.y == 11 || pieces.back().d.y == 11)
-                std::cout << "Game Over" << std::endl;
+                printf("Debug: Game Over\n");
             pieces.push_back(Piece(colour[std::rand() % 18]));
         }
     }
